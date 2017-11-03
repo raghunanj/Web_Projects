@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			x = 147.5; y = 147.5; width = 5; height = 5;
+			function drawSquare()
+			{
+				ctx.beginPath()
+				ctx.rect(x, y, width, height);
+				ctx.fillStyle = "red"
+				ctx.fill();
+				ctx.closePath();
+				width += 5
+				height += 5
+				if(x <= 0.01 && y <= 0.01)
+				{
+					ctx.clearRect(0, 0, 300, 300)
+					clearInterval(t1)
+					x = 147.5; y = 147.5; r = 5
+					t2 = setInterval(drawCircle, 50)
+				}
+				x -= 2.5;
+				y -= 2.5;
+			}
+			function drawCircle()
+			{
+				ctx.beginPath()
+				ctx.fillStyle = "blue"
+				ctx.arc(x, y, r, 0, 2 * Math.PI)
+				ctx.fill()
+				ctx.closePath()
+				if(r == 150)
+				{
+					ctx.clearRect(0, 0, 300, 300)
+					clearInterval(t2)
+					x = 147.5; y = 147.5; width = 5; height = 5;
+					t1 = setInterval(drawSquare, 25)
+				}
+				r += 5
+			}
+			window.onload = function()
+			{
+				can = document.getElementById("can")
+				ctx = can.getContext("2d");
+				t1 = setInterval(drawSquare, 25)
+				drawSquare()
+			}
+			function sleep(n)
+			{
+				d1 = new Date()
+				m1 = d1.getTime()
+				m2 = d1.getTime()
+				while((m2 - m1) < n * 1000)
+				{
+					d1 = new Date()
+					m2 = d1.getTime()
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<canvas class = "can" id="can" height="300px" width = "300px" style="border : 1px solid"></canvas>
+		<button onclick="sleep(1)">Click</button>
+	</body>
+</html>

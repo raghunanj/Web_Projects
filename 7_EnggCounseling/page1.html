@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			.table1
+			{
+				height : 25%;
+				width : 50%;
+				text-align : center;
+			}
+		</style>
+		<script>
+			timePeriod = 100
+			function periodicRefresh()
+			{
+				xhr = new XMLHttpRequest()
+				xhr.open("get", "server.php", true)
+				xhr.onreadystatechange = success;
+				xhr.onerror = fallback
+				xhr.send(null)
+				t1 = setTimeout(periodicRefresh, timePeriod)
+			}
+			function success()
+			{
+				timePeriod = 100;
+				if(xhr.readyState == 4)
+				{
+					if(xhr.status != 200 && xhr.status != 304)
+					{
+						fallback();
+					}
+					else
+					{
+						data = JSON.parse(xhr.responseText)
+						
+						td1 = document.getElementById("td1")
+						td2 = document.getElementById("td2")
+						td3 = document.getElementById("td3")
+						td4 = document.getElementById("td4")
+						
+						td1.innerHTML = data["pesit"]["cse"]
+						td2.innerHTML = data["pesit"]["ece"]
+						td3.innerHTML = data["rvce"]["cse"]
+						td4.innerHTML = data["rvce"]["ece"]
+						//clearTimeout(t1)
+					}
+				}
+			}
+			function fallback()
+			{
+				clearTimeout(t1)
+				timePeriod += timePeriod
+				t1 = setTimeout(periodicRefresh, timePeriod)
+				//alert(timePeriod)
+			}
+			function reserveSeat()
+			{
+				s1 = document.getElementById("s1")
+				s2 = document.getElementById("s2")
+				if(s1.selectedIndex != 0 && s2.selectedIndex != 0)
+				{
+					clg = s1[s1.selectedIndex].value
+					seat = s2[s2.selectedIndex].value
+					
+					xhr = new XMLHttpRequest()
+					xhr.open("get", "server.php?clg=" + clg + "&seat=" + seat, true)
+					xhr.onreadystatechange = success;
+					xhr.onerror = fallback
+					xhr.send(null)
+					
+				}
+				else
+				{
+					alert("Select correct college and/or seat")
+				}
+			}
+		</script>
+	</head>
+	<body onload="periodicRefresh()">
+		<center>
+			<h2>Engineering Seat Counselling</h2>
+			<div class="d1">
+				<table border="1px solid" class="table1">
+					<tr>
+						<th colspan="2">Pesit</th>
+						<th colspan="2">Rvce</th>
+					</tr>
+					<tr>
+						<th>CSE</th>
+						<th>ECE</th>
+						<th>CSE</th>
+						<th>ECE</th>
+					</tr>
+					<tr>
+						<td id="td1">60</td>
+						<td id="td2">60</td>
+						<td id="td3">60</td>
+						<td id="td4">60</td>
+					</tr>
+				</table><br/><br/><br/>
+				<select id="s1">
+					<option value="college">College</option>
+					<option value="pesit">PESIT</option>
+					<option value="rvce">RVCE</option>
+				</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<select id="s2">
+					<option value="seat">Seat</option>
+					<option value="cse">CSE</option>
+					<option value="ece">ECE</option>
+				</select><br/><br/><br/>
+				<button onclick="reserveSeat()">Reserve</button>
+			</div>
+		</center>
+	</body>
+</html>

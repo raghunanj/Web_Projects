@@ -1,0 +1,7 @@
+Sachin:India:200:15800:52
+Dhoni:India:120:12000:34
+Gilchrist:Australia:195:12000:40
+Dravid:India:180:12345:30
+Ponting:Australia:210:16000:45
+Fleming:New Zealand:150:10000:30
+ViratKohli:India:80:7800:28

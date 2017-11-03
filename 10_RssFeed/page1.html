@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			function anchor(title, link)
+			{
+				var a = document.createElement("a");
+				a.innerHTML = title + "<br>";
+				a.href = link;
+				return a;
+			}
+			function search()
+			{
+				ip1 = document.getElementById("ip1")
+				val = ip1.value;
+				ip1.value = "";
+				xhr = new XMLHttpRequest();
+				xhr.open("get", "server.php?category=" + val, true);
+				xhr.onreadystatechange = function()
+				{
+					if(xhr.readyState == 4)
+					{
+						var d1 = document.getElementById("d1");
+						root = xhr.responseXML.documentElement;
+						items = root.getElementsByTagName("item")
+						for(i = 0, len = items.length; i < len; ++i )
+						{
+							title = items[i].getElementsByTagName("title")[0].innerHTML;
+							link = items[i].getElementsByTagName("link")[0].innerHTML;
+							d1.appendChild(anchor(title, link))
+						}
+					}
+				}
+				xhr.send(null);
+			}
+		</script>
+	</head>
+	<body>
+		<input id = "ip1" type="text" placeholder="search"></input>
+		<button onclick="search()">Search</button><br/><br/>
+		<div id="d1"></div>
+	</body>
+</html>

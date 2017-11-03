@@ -1,0 +1,74 @@
+0026515628:Health A Guide to Wellness
+0030020786:Principles of Instrumental Analysis
+0070109109:Fundamental Methods of Mathematical Economics
+0070311366:Introduction to Manufacturing Processes
+0070350485:An Introduction to Mechanics
+007035958X:Power System Stability and Control
+0070393605:Project Management for Engineering and Construction
+0070418780:Waste water Engineering:Treatment and Reuse
+007054235X:Principles of Mathematical Analysis
+0072294337:Financial Markets and Corporate Strategy
+0072299908:Manufacturing Planning and Control for Supply Chain Management
+007231592X:Biochemistry:The Molecular Basis of Life
+0072321113:Digital Communications
+0072339705:Risk Management and Insurance
+0072345535:Environmental Biotechnology:Principles and Applications
+0072348984:Gerald D. Schmidt & Larry S. Roberts' Foundations of Parasitology
+0072350539:Principles of Environmental Engineering and Science
+0072385790:An Introduction to Biological Evolution
+0072392665:Plant Design and Economics for Chemical Engineers
+0072398876:Management of a Sales Force
+0072406550:Heat Transfer
+0072431881:Introduction to Transportation Engineering
+0072432020:Fluid Mechanics With Engineering Applications
+0072437316:Biology
+0072448482:Concepts of Modern Physics
+0072452692:Money, Banking And Financial Markets
+007246352X:Communication Networks:Fundamental Concepts and Key Architectures
+007246464X:Biology
+0072465239:Electric Machinery Fundamentals
+0072465638:Database Management Systems
+0072466855:Introduction To The Finite Element Method
+0072467509:Introduction to Computing Systems:From Bits and Gates to C and Beyond
+0072468246:Methods, Standards, and Work Design
+007246836X:Introduction to Probability and Statistics:Principles and Applications for Engineering and the Computing S
+0072471468:Product Design and Development
+0072478527:Basic Econometrics
+0072492953:Music:An Appreciation
+0072499389:Fundamentals of Digital Logic with VHDL Design
+0072505036:Microelectronic Circuit Design
+0072525231:Basic Marketing:A Global-Managerial Approach
+0072528303:Vertebrates:Comparative Anatomy, Function, Evolution
+0072534958:Physical Chemistry
+0072819359:Economics:Principles, Problems, and Policies
+0072823402:Macroeconomics
+0072828803:Marketing
+0072829206:Corporate Finance
+0072831561:World Class Supply Management:Key to Supply Chain Management
+0072834943:Managerial Accounting
+0072846119:Molecular Biology
+0072848235:Unit Operations of Chemical Engineering
+0072859342:Gilbert's Living with Art
+0072861789:Investments
+0072864478:Design of Machinery:An Introduction to the Synthesis and Analysis of Mechanisms and Machines
+0072864877:Consumer Behaviour and Marketing Strategy:By J. Paul Peter, Jerry C. Olson
+0072865784:Business Marketing:Connecting Strategy,relationships, And Learning
+0072865989:Product Management
+0072871776:Labour Economics
+0072872527:Complex Variables and Applications
+0072873795:Purchasing and Supply Management:With 50 Supply Chain Cases
+0072875062:Anatomy & Physiology:The Unity Of Form And Function
+0072876484:Public Finance
+0072881208:Leadership:Enhancing The Lessons Of Experience
+0072887605:Perception
+0072918993:Matching Supply With Demand:An Introduction To Operations Management
+0072919817:Simulation With Arena
+0072921641:Biology
+0072921935:Mechanical Engineering Design
+0072922184:Understanding Business
+0072922427:Introduction to Matlab 7 for Engineers
+007293414X:Investments
+007293588X:Management Information Systems
+0072936932:Managerial Accounting
+0072947756:Corporate Information Strategy And Management:Text And Cases
+0072947888:Supply Chain Logistics Management

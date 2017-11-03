@@ -1,0 +1,54 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<script src="http://maps.googleapis.com/maps/api/js"></script>
+		<script>
+			xhr = new XMLHttpRequest()
+			xhr.open("get","server.php",false);
+			xhr.onreadystatechange = function()
+			{
+				if(xhr.readyState == 4 && xhr.status == 200)
+				{
+					var clg = JSON.parse(xhr.responseText)
+					pesit = new google.maps.LatLng(clg.pesit[0], clg.pesit[1]);
+					pesse = new google.maps.LatLng(clg.pesse[0], clg.pesse[1])
+					rvce = new google.maps.LatLng(clg.rvce[0], clg.rvce[1]);
+					bmsce = new google.maps.LatLng(clg.bmsce[0], clg.bmsce[1]);
+				}
+			}
+			xhr.send()
+			function init()
+			{
+				mapProp = {
+					center : pesit,
+					zoom : 13,
+					mapTypeId : google.maps.MapTypeId.ROADMAP
+				};
+				var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+				var markerPesit = new google.maps.Marker({position : pesit});
+				markerPesit.setMap(map);
+				var infoPesit = new google.maps.InfoWindow({content : "PES Institue of Technology"});
+				infoPesit.open(map, markerPesit);
+				
+				var markerPesse = new google.maps.Marker({position : pesse});
+				markerPesse.setMap(map);
+				var infoPesse = new google.maps.InfoWindow({content : "PES School of Engineering"});
+				infoPesse.open(map, markerPesse);
+				
+				var markerRvce = new google.maps.Marker({position : rvce});
+				markerRvce.setMap(map);
+				var infoRvce = new google.maps.InfoWindow({content : "RV College of Engineering"});
+				infoRvce.open(map, markerRvce);
+				
+				var markerBmsce = new google.maps.Marker({position : bmsce});
+				markerBmsce.setMap(map);
+				var infoBmsce = new google.maps.InfoWindow({content : "BMS College of Engineering"});
+				infoBmsce.open(map, markerBmsce);
+			}
+			google.maps.event.addDomListener(window, "load", init);
+		</script>
+	</head>
+	<body>
+		<div id="googleMap" style="width:100%;height:100%;"></div>
+	</body>
+</html>

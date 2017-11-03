@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			.table1
+			{
+				height : 25%;
+				width : 50%;
+				text-align : center;
+			}
+		</style>
+		<script>
+			timePeriod = 100
+			function periodicRefresh()
+			{
+				xhr = new XMLHttpRequest()
+				xhr.open("get", "server.php", true)
+				xhr.onreadystatechange = success;
+				xhr.onerror = fallback
+				xhr.send(null)
+				t1 = setTimeout(periodicRefresh, timePeriod)
+			}
+			function success()
+			{
+				timePeriod = 100;
+				if(xhr.readyState == 4)
+				{
+					if(xhr.status != 200 && xhr.status != 304)
+					{
+						fallback();
+					}
+					else
+					{
+						data = JSON.parse(xhr.responseText)
+						
+						td1 = document.getElementById("td1")
+						td2 = document.getElementById("td2")
+						td3 = document.getElementById("td3")
+						td4 = document.getElementById("td4")
+						
+						td1.innerHTML = data["rado"]
+						td2.innerHTML = data["rollex"]
+						td3.innerHTML = data["yonex"]
+						td4.innerHTML = data["wilson"]
+					}
+				}
+			}
+			function fallback()
+			{
+				clearTimeout(t1)
+				timePeriod += timePeriod
+				t1 = setTimeout(periodicRefresh, timePeriod)
+				//alert(timePeriod)
+			}
+			function buy()
+			{
+				s1 = document.getElementById("s1")
+				if(s1.selectedIndex != 0)
+				{
+					item = s1[s1.selectedIndex].value
+					xhr = new XMLHttpRequest()
+					xhr.open("get", "server.php?item=" + item, true)
+					xhr.onreadystatechange = success;
+					xhr.onerror = fallback
+					xhr.send(null)	
+				}
+				else
+				{
+					alert("Select a watch")
+				}
+			}
+		</script>
+	</head>
+	<body onload="periodicRefresh()">
+		<center>
+			<h2>Engineering Seat Counselling</h2>
+			<div class="d1">
+				<table border="1px solid" class="table1">
+					<tr>
+						<th colspan="2">Watches</th>
+						<th colspan="2">Racquettes</th>
+					</tr>
+					<tr>
+						<td>Rado</td>
+						<td>Rollex</td>
+						<td>Yonex</td>
+						<td>wilson</td>
+					</tr>
+					<tr>
+						<td id="td1">10</td>
+						<td id="td2">5</td>
+						<td id="td3">9</td>
+						<td id="td4">15</td>
+					</tr>
+				</table><br/><br/><br/>
+				<select id="s1">
+					<option value="select">Select</option>
+					<option value="rado">Rado</option>
+					<option value="rollex">Rollex</option>
+					<option value="yonex">Yonex</option>
+					<option value="wilson">wilson</option>
+				</select><br/><br/><br/>
+				<button onclick="buy()">Buy</button>
+			</div>
+		</center>
+	</body>
+</html>

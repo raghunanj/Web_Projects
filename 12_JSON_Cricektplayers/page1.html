@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			function createRow()
+			{
+				var tr = document.createElement("tr");
+				return tr;
+			}
+			function createCol(text)
+			{
+				var td = document.createElement("td");
+				td.innerHTML = text;
+				td.style.textAlign = "center"
+				td.style.border = "1px solid"
+				return td;
+			}
+			function createColHeader(text)
+			{
+				var td = document.createElement("th");
+				td.innerHTML = text;
+				td.style.border = "1px solid"
+				return td;
+			}
+			function appendTd(tr, t1, t2, t3, t4, t5)
+			{
+				tr.appendChild(t1)
+				tr.appendChild(t2)
+				tr.appendChild(t3)
+				tr.appendChild(t4)
+				tr.appendChild(t5)
+			}
+			function getDetails()
+			{
+				var ip = document.getElementById("ip1");
+				xhr = new XMLHttpRequest();
+				xhr.open("get","server.php?country=" + ip.value, true)
+				xhr.onreadystatechange = function()
+				{
+					if(xhr.readyState == 4 && xhr.status == 200)
+					{
+						var div = document.getElementById("div1");
+						div.innerHTML = ""
+						if(xhr.responseText)
+						{
+							data = JSON.parse(xhr.responseText)
+						
+							var table = document.createElement("table")
+							table.style.border = "1px solid"
+							var tr1 = createRow()
+							var th1 = createColHeader("Name")
+							var th2 = createColHeader("Country")
+							var th3 = createColHeader("Matches")
+							var th4 = createColHeader("Runs")
+							var th5 = createColHeader("Centuries")
+							
+							tr1.appendChild(th1)
+							tr1.appendChild(th2)
+							tr1.appendChild(th3)
+							tr1.appendChild(th4)
+							tr1.appendChild(th5)
+							
+							table.appendChild(tr1)
+							
+							for(i in data)
+							{
+								var tr = createRow()
+								td1 = createCol(i)
+								td2 = createCol(data[i][0])
+								td3 = createCol(data[i][1])
+								td4 = createCol(data[i][2])
+								td5 = createCol(data[i][3])
+								appendTd(tr, td1, td2, td3, td4, td5)
+								table.appendChild(tr)
+							}
+							div.appendChild(table)
+						}
+						else
+						{
+							div.innerHTML = "<h2>NO DATA AVAILABLE</h2>"
+						}
+					}
+				}
+				xhr.send(null);
+			}
+		</script>
+	</head>
+	<body>
+		<input id="ip1" type="text" placeholder="Enter a country name"></input>
+		<button onclick="getDetails()">Click</button><br/><br/><br/>
+		<div id="div1">
+		</div>
+	</body>
+</html>

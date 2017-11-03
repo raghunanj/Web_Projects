@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<style>
+			.d1
+			{
+				border:1px solid;
+				height:50%;
+				width:50%;
+				position:absolute;
+				top:35%;
+				left:25%;
+				right:25%;
+				bottom:25%;
+			}
+		</style>
+		<script>
+			function search()
+			{
+				isbn = document.getElementById("ip1").value;
+				if(isbn)
+				{
+					xhr = new XMLHttpRequest();
+					xhr.open("get","server.php?isbn=" + isbn, true)
+					xhr.onreadystatechange = function()
+					{
+						if(xhr.readyState == 4)
+						{
+							p1 = document.getElementById("res");
+							p1.innerHTML = xhr.responseText;
+						}
+					}
+					xhr.send(null);
+				}
+				else
+				{
+					alert("Enter content to search");
+				}
+			}
+			function loadImg(imgName, num)
+			{
+				function load()
+				{
+					img = document.getElementsByTagName("img");
+					img[num].src = imgName;
+				}
+				return load;
+			}
+			window.onload = function()
+			{
+				setTimeout(loadImg("img1.jpg",0), 500);
+				setTimeout(loadImg("img2.jpg",1), 1500);
+				setTimeout(loadImg("img3.jpg",2), 3000);
+				setTimeout(loadImg("img4.jpg",3), 5000);
+				setTimeout(loadImg("img5.jpg",4), 4500);
+			}
+		</script>
+	</head>
+	<body>
+		
+		<img src = "loader.gif" height = "200px" width = "250px"></img>
+		<img src = "loader.gif" height = "200px" width = "250px"></img>
+		<img src = "loader.gif" height = "200px" width = "250px"></img>
+		<img src = "loader.gif" height = "200px" width = "250px"></img>
+		<img src = "loader.gif" height = "200px" width = "250px"></img>
+		<div class="d1"><br/>
+			<center>
+				<input type = "text" id="ip1" placeholder = "Search"></input>
+				<button onclick="search()">Search</button><br/><br/>
+				<p id="res"></p><br/>
+			</center>
+			<p>
+				This is website where you can search for books<br/>
+				It also provide few usefull links<br/>
+				Their few images which will be soon visible<br/>
+			</p>
+			<a href="https://www.google.com">Google</a><br/>
+			<a href="https://www.yahoo.com">Yahoo</a><br/>
+			<a href="https://www.wikipedia.com">Wikipedia</a><br/>
+		</div>
+	</body>
+</html>

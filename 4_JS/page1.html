@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			function getDetails()
+			{
+				usn = document.getElementById("ip1")
+				f1 = document.getElementById("f1")
+				f1.src = "server.php?usn=" + usn.value;
+			}
+			function validity(text, color, usn)
+			{
+				if(color == "red")
+				{
+					ip2 = document.getElementById("ip2")
+					ip3 = document.getElementById("ip3")
+					ip4 = document.getElementById("ip4")
+					ip2.value = "";
+					ip3.value = "";
+					ip4.value = "";
+				}
+				ip1 = document.getElementById("ip1")
+				ip1.value = usn;
+				s1 = document.getElementById("s1");
+				s1.style.color = color;
+				s1.innerHTML = text;
+			}
+			function disp(name, dept, gpa)
+			{
+				ip2 = document.getElementById("ip2")
+				ip3 = document.getElementById("ip3")
+				ip4 = document.getElementById("ip4")
+				ip2.value = name;
+				ip3.value = dept;
+				ip4.value = gpa;	
+			}
+		</script>
+	</head>
+	<body>
+		<label>USN &nbsp;&nbsp;&nbsp;&nbsp;: <input type="text" id="ip1" onblur="getDetails()"></input></label>
+		<span id="s1"></span><br/>
+		<label>NAME : <input type="text" id="ip2" readonly></input></label><br/>
+		<label>DEPT &nbsp;&nbsp;: <input type="text" id="ip3" readonly></input></label><br/>
+		<label>GPA &nbsp;&nbsp;&nbsp;&nbsp;: <input type="text" id="ip4" readonly></input></label><br/>
+		<iframe id="f1" style = "display:none"></iframe>
+	</body>
+</html>

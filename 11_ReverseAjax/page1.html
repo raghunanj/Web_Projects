@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			var lastMsg = ""
+			function makeCall()
+			{
+				xhr = new XMLHttpRequest();
+				xhr.open("get","poll.php",true);
+				xhr.onreadystatechange = success;
+				xhr.send(null);
+			}
+			function success()
+			{
+				if(xhr.readyState == 3)
+				{
+					div1 = document.getElementById("div1");
+					temp = xhr.responseText.split(";");
+					newMsg = temp[temp.length - 1];
+					if(lastMsg != newMsg)
+					{
+						lastMsg = newMsg;
+						div1.innerHTML += "Friend : " + newMsg + "<br/>";
+					}
+				}
+				else if(xhr.readyState == 4)
+				{
+					xhr.abort();
+					makeCall();
+				}
+			}
+			function sendData()
+			{
+				div1 = document.getElementById("div1");
+				ta1 = document.getElementById("msg");
+				div1.innerHTML += "Me : " + ta1.value + "<br/>";
+				ta1.value = "";
+			}
+		</script>
+	</head>
+	<body onload="makeCall()">
+		<div id="div1"></div>
+		<textarea id="msg"> </textarea>
+		<button onclick="sendData()">Send</button>
+	</body>
+</html>

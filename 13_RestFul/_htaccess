@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteRule ^read/student/(.*)$ server.php?read=usn=$1
+RewriteRule ^update/student/(.*)/([0-9\.]*)$ server.php?update=usn=$1,grade=$2
+RewriteRule ^create/student/(.*)/([a-z]*)/([0-9\.]*)$ server.php?create=$1,$2,$3

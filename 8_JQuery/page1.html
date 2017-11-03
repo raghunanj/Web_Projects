@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			.a1
+			{
+				position : absolute;
+				left : 62%;
+				top : 65%;
+			}
+			.a2
+			{
+				position : absolute;
+				left : 25%;
+				top : 65%;
+			}
+			.img
+			{
+				width : 100%;
+				height : 100%;
+			}
+			.img1
+			{
+				width : 0%;
+				height : 100%;
+			}
+			.d1
+			{
+				position : absolute;
+				left : 25%;
+				top : 25%;
+				height : 40%;
+				width : 40%;
+				border : 1px solid;
+			}
+		</style>
+		<script src = "jquery.js"></script>
+		<script>
+			i = 2;
+			window.onload = function()
+			{
+				jimg = $("img#img")
+				jimg.hide();
+				jimg.show(1000)
+			}
+			function next()
+			{
+				jdiv1 = $("div#d1")
+				jdiv2 = $("div#d2")
+				if(i == 2)
+				{
+					jdiv1.html("<img src = 'image" + i + ".jpg' class = 'img' id='img2'></img>")
+					jimg2 = $("img#img2")
+					jimg2.fadeOut(0)
+					jimg2.fadeIn(2000);
+					jdiv2.append("<a href = 'javascript:previous()' class='a2' id = 'a2'>Previous</a>")
+				}
+				else
+				{
+					jdiv1.html("<img src = 'image" + i + ".jpg' class = 'img1' id='img3'></img>");
+					jimg3 = $("img#img3")
+					jimg3.animate({width : '100%'}, 2000);
+					jdiv2.html("<a href = 'javascript:previous()' class='a2' id = 'a2'>Previous</a>")
+				}
+				i = i % 3 + 1
+			}
+			function previous()
+			{
+				if(i == 1)
+				{
+					i = 3
+					jdiv1.html("<img src = 'image" + (i - 1) + ".jpg' class = 'img' id='img2'></img>")
+					jimg2 = $("img#img2")
+					jimg2.fadeOut(0)
+					jimg2.fadeIn(2000);
+					jdiv2.append("<a href = 'javascript:next()' class='a1' id = 'a2'>Next</a>")
+				}
+				else
+				{
+					i = 2
+					jdiv1.html("<img src = 'image" + (i - 1) + ".jpg' class = 'img' id='img3'></img>");
+					jimg3 = $("img#img3")
+					jimg3.hide();
+					jimg3.show(1000)
+					jdiv2.html("<a href = 'javascript:next()' class='a1' id = 'a1'>Next</a>")
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="d1" class = "d1">
+			<img src = "image1.jpg" class="img" id="img"></img>
+		</div>
+		<div id="d2" class="d2">
+			<a href = "javascript:next()" class="a1" id = "a1">Next</a>
+		</div>
+	</body>
+</html>
